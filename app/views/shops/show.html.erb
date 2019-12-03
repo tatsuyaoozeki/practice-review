@@ -5,5 +5,15 @@
   <%= @shop.name %>
 </p>
 
+<%= @reviews.each do |r| %>
+  <%= r.body %>
+<% end %>
+
+<%= form_for @review do |f| %>
+  <%= f.hidden_field :shop_id, value: @shop.id %>
+  <%= f.text_field :body, class: "text_field" %>
+  <%= f.submit '投稿', class: "submit-btn" %>
+<% end %>
+
 <%= link_to 'Edit', edit_shop_path(@shop) %> |
 <%= link_to 'Back', shops_path %>
